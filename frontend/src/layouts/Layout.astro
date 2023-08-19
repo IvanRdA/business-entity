@@ -16,7 +16,6 @@ const successColor = "#02BA29";
 const warningColor = "#FFD12A";
 
 // IMPORTING SIDEBAR AND MENU COMPONENTS
-import Sidebar from "./Sidebar.astro";
 import Menu from "./Menu.astro";
 ---
 
@@ -36,10 +35,7 @@ import Menu from "./Menu.astro";
     <header>
       <Menu />
     </header>
-    <main>
-      <Sidebar />
-      <slot />
-    </main>
+    <slot />
   </body>
 
   <style

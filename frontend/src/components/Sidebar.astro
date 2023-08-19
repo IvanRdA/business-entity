@@ -1,0 +1,43 @@
+---
+interface Props {
+  actions: String[];
+  h3Text: String;
+  descrText: String;
+}
+
+const { actions, h3Text, descrText } = Astro.props;
+---
+
+<aside
+  class="max-w-[20vw] bg-[--whiteColor] text-[--blackColor] min-h-screen text-center inline-block"
+>
+  <header>
+    <h3 class="block text-xl m-5 max-h-[5vh] text-[--mainRed] font-bold">
+      {h3Text}
+    </h3>
+    <p class="text-xs m-5 max-h-[5vh] text-[--blackColor] text-justify">
+      {descrText}
+    </p>
+  </header>
+
+  <main>
+    <section>
+      <h5 class="text-sm m-5 max-h-[5vh] text-[--darkRed] font-semibold mt-15">
+        Acciones
+      </h5>
+    </section>
+    <section>
+      <div class="flex flex-col gap-4">
+        {
+          actions.map((action: String) => {
+            return (
+              <button class="items-center text-[--whiteColor] bg-[--darkRed] hover:bg-[--mainRed] hover:scale-110 max-h-[5vh] text-xs flex p-4 justify-center w-40 m-auto rounded-tr-md rounded-bl-md ease-out duration-200">
+                <a href="#">{action}</a>
+              </button>
+            );
+          })
+        }
+      </div>
+    </section>
+  </main>
+</aside>

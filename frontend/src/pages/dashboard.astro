@@ -1,0 +1,15 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+import Sidebar from "../components/Sidebar.astro";
+---
+
+<Layout pageTitle="Dashboard">
+  <main>
+    <Sidebar
+      actions={["Create", "Update", "Delete", "Filter"]}
+      h3Text="Dashboard page"
+      descrText="Aqui podras ver el resumen de datos principal de tu negocio."
+    />
+  </main>
+</Layout>
