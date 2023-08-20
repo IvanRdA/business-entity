@@ -1,0 +1,15 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+import Sidebar from "../components/Sidebar.astro";
+---
+
+<Layout pageTitle="Tiendas">
+  <main>
+    <Sidebar
+      actions={["Create", "Update", "Delete", "Filter"]}
+      h3Text="Tiendas page"
+      descrText="Aqui podras manejar las tiendas y unidades de negocio de tu companyia"
+    />
+  </main>
+</Layout>
