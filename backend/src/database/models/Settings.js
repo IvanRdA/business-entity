@@ -5,13 +5,25 @@ const settingsSchema = mongoose.Schema({
   shops: {},
   workers: {},
   schedules: {},
-  sales: {},
+  sales: {
+    shop: {
+      grossMargin: { type: Number, default: 0.7, min: 0.1, max: 1 },
+    },
+    web: {
+      sendingCost: { type: Number, default: 0 },
+    },
+  },
   clients: {},
   orders: {},
   suppliers: {},
   expenses: {},
   products: {},
-  generals: {},
+  generals: {
+    security: {},
+    globals: {
+      currency: { type: String, default: "€" },
+    },
+  },
 });
 
 const SETTINGS = mongoose.model("Settings", settingsSchema);
