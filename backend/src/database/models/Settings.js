@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
 
 const settingsSchema = mongoose.Schema({
-  dashboard: {},
+  dashboard: {
+    viewMode: { type: String, enum: ["Grid", "List"], default: "Grid" },
+  },
   shops: {},
   workers: {},
   schedules: {},
