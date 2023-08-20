@@ -16,19 +16,26 @@ const successColor = "#02BA29";
 const warningColor = "#FFD12A";
 
 // IMPORTING SIDEBAR AND MENU COMPONENTS
-import Menu from "./Menu.astro";
+import Menu from "../components/Menu.astro";
 ---
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
     <meta
       name="description"
       content="Business entity site for data managing of a business"
     />
-    <link rel="icon" type="image/png" href="favicon.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="favicon.png"
+    />
     <title>Business Entity - {pageTitle}</title>
   </head>
   <body>
@@ -53,14 +60,10 @@ import Menu from "./Menu.astro";
     body {
       margin: 0px;
       padding: 0px;
-      overflow: "hidden";
+      overflow: hidden;
       height: 100vh;
       width: 100vw;
       color: var(--whiteColor);
-    }
-
-    main {
-      background-color: var(--mainRed);
     }
 
     nav {

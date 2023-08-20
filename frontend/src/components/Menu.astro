@@ -1,74 +1,80 @@
 ---
-import Logout from "../components/Logout.astro";
+import Logout from "./Logout.astro";
 ---
 
 <nav
   class="flex flex-col md:flex-row justify-evenly items-center text-center content-evenly max-h-[30vh] w-[100vw]"
 >
-  <a class="justify-start" href="/dashboard"
-    ><img class="w-[150px] md:ml-4" src="logo.png" /></a
+  <a
+    class="justify-start"
+    href="/dashboard"
+    ><img
+      class="w-[150px] md:ml-4"
+      src="logo.png"
+    /></a
   >
   <ul class="flex gap-6 text-center m-auto text-[22px] md:text-sm">
     <li>
       <a
         class="hover:text-[--blackColor] hover:bg-[--whiteColor]"
-        href="/dashboard"
-      >
-        Dashboard
-      </a>
-    </li>
-    <li>
-      <a
-        class="hover:text-[--blackColor] hover:bg-[--whiteColor]"
-        href="/tiendas">Tiendas</a
+        href="/tiendas"
+        >Tiendas</a
       >
     </li>
     <li>
       <a
         class="hover:text-[--blackColor] hover:bg-[--whiteColor]"
-        href="/trabajadores">Trabajadores</a
+        href="/trabajadores"
+        >Trabajadores</a
       >
     </li>
     <li>
       <a
         class="hover:text-[--blackColor] hover:bg-[--whiteColor]"
-        href="/horarios">Horarios</a
+        href="/horarios"
+        >Horarios</a
       >
     </li>
     <li>
       <a
         class="hover:text-[--blackColor] hover:bg-[--whiteColor]"
-        href="/ventas">Ventas</a
+        href="/ventas"
+        >Ventas</a
       >
     </li>
     <li>
       <a
         class="hover:text-[--blackColor] hover:bg-[--whiteColor]"
-        href="/encargos">Encargos</a
+        href="/encargos"
+        >Clientes</a
       >
     </li>
     <li>
       <a
         class="hover:text-[--blackColor] hover:bg-[--whiteColor]"
-        href="/proveedores">Proveedores</a
+        href="/encargos"
+        >Encargos</a
       >
     </li>
     <li>
       <a
         class="hover:text-[--blackColor] hover:bg-[--whiteColor]"
-        href="/compras">Compras</a
+        href="/proveedores"
+        >Proveedores</a
       >
     </li>
     <li>
       <a
         class="hover:text-[--blackColor] hover:bg-[--whiteColor]"
-        href="/productos">Productos</a
+        href="/compras"
+        >Compras</a
       >
     </li>
     <li>
       <a
         class="hover:text-[--blackColor] hover:bg-[--whiteColor]"
-        href="/escandallos">Escandallos</a
+        href="/productos"
+        >Productos</a
       >
     </li>
   </ul>
