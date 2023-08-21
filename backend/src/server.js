@@ -12,6 +12,7 @@ app.set("port", process.env.PORT || 4000);
 
 // MIDDLEWARES
 app.use(morgan(process.env.WORK_ENV));
+app.use(Express.json());
 
 // ROUTES
 app.use(require("./routes/login.routes"));
