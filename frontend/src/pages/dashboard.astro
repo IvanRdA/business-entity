@@ -2,14 +2,16 @@
 import Layout from "../layouts/Layout.astro";
 
 import Sidebar from "../components/Sidebar.astro";
+import DashboardMain from "../components/DashboardMain";
 ---
 
 <Layout pageTitle="Dashboard">
-  <main>
+  <div class="flex flex-row">
     <Sidebar
       actions={["Create", "Update", "Delete", "Filter"]}
       h3Text="Dashboard page"
       descrText="Aqui podras ver el resumen de datos principal de tu negocio."
     />
-  </main>
+    <DashboardMain client:load />
+  </div>
 </Layout>
