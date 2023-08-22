@@ -13,34 +13,23 @@ export default function Home(){
     const pwdRegExp = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{6,20}).*$/;
 
     useEffect(() => {
-      // NEED TO CHECK THE ELSE IF STATEMENTS BECAUSE ONCE IT GETS TO TRUE NEVER CHANGE TO FALSE AGAIN. ONCE IT'S SOLVED THE FUNCTIONALITY WILL WORK COMPLETELY
-      if(mailRegExp.test(mail)){
-        console.log(flags)
-        console.log([mail, pwd])
-        setFlags({
-          ...flags,
-          mailFlag: true
-        });
-      }else if(mailRegExp.test(mail) == false){
-        console.log(flags)
-        console.log([mail, pwd])
-          setFlags({
-            ...flags,
-            mailFlag: false
-        });
-      }
-
-      if(pwdRegExp.test(pwd)){
-        setFlags({
-          ...flags,
-          pwdFlag: true
-        });
-      }else if(!pwdRegExp.test(pwd)){
-          setFlags({
-            ...flags,
-            pwdFlag: false
-        });
-      }
+      setFlags(prevFlags => {
+        let newFlags = { ...prevFlags };
+        
+        if (mailRegExp.test(mail)) {
+          newFlags.mailFlag = true;
+        }else {
+          newFlags.mailFlag = false;
+        }
+    
+        if (pwdRegExp.test(pwd)) {
+          newFlags.pwdFlag = true;
+        }else {
+          newFlags.pwdFlag = false;
+        }
+    
+        return newFlags;
+      });
     }, [mail, pwd]);
 
     // HANDLING THE EMAIL AND PASSWORD INPUTS
@@ -56,13 +45,6 @@ export default function Home(){
     // VALIDATING CREDENTIALS ON THE BACKEND AND MANAGING THE RESPONSE
     async function loginValidation(e){
       e.preventDefault();
-      const regExp = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-
-      if(!regExp.test(mail)){
-        alert('Formato de correo incorrecto. Pruebelo de nuevo.');
-      }else{
-        alert('Working');
-      }
     };
 
     return(
