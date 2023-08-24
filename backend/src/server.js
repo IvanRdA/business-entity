@@ -2,6 +2,7 @@ require("dotenv").config();
 
 // IMPORTS
 const morgan = require("morgan");
+const cors = require("cors");
 
 // LAUNCHING
 const Express = require("express");
@@ -13,6 +14,7 @@ app.set("port", process.env.PORT || 4000);
 // MIDDLEWARES
 app.use(morgan(process.env.WORK_ENV));
 app.use(Express.json());
+app.use(cors());
 
 // ROUTES
 app.use(require("./routes/login.routes"));

@@ -66,6 +66,13 @@ const adminController = {
   getAllWorkers: () => {},
   getSingleWorker: () => {},
 
+  // ADMINS
+  createAdmin: (email) => {},
+  deleteAdmin: (id) => {},
+  updateAdmin: (id) => {},
+  getAllAdmins: () => {},
+  getSingleAdmin: (id) => {},
+
   // DASHBOARD
 };
 

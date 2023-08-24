@@ -45,6 +45,24 @@ export default function Home(){
     // VALIDATING CREDENTIALS ON THE BACKEND AND MANAGING THE RESPONSE
     async function loginValidation(e){
       e.preventDefault();
+
+      const response = await fetch('http://localhost:4000/private-api/v1-0/validateLogin', {
+        method: 'POST',
+        headers: 
+        { 
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ mail, pwd })
+      })
+      const admins = await response.json();
+      console.log(admins)
+      console.log([mail, pwd])
+
+      if(admins.status){
+        alert(admins.status);
+      }else{ 
+        window.location.href = 'http://localhost:3000/dashboard';
+      }
     };
 
     return(
@@ -79,7 +97,7 @@ export default function Home(){
                 value={pwd}
                 className="w-[100%] py-1 focus:border-blue-500 p-2"
                 type="password"
-                name="pwd"
+                name="password"
                 id="pwd"
                 placeholder="MyPasswordHere"
                 onChange={handlePassword}
