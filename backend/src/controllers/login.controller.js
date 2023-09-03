@@ -1,21 +1,30 @@
+require("../database/database.js");
+const USER = require("../database/models/User.js");
+
+const bcrypt = require("bcrypt");
+
 const loginController = {
-  checkCredentials: (mail, pwd) => {
-    let mailFlag = false;
-    let pwdFlag = false;
+  checkLoginCredentials: async (email, password) => {
+    try {
+      const user = await USER.find({ email });
 
-    const mailRegExp = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    if (mailRegExp.test(mail)) {
-      mailFlag = true;
-    }
-    const pwdRegExp = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{6,20}).*$/;
-    if (pwdRegExp.test(pwd)) {
-      pwdFlag = true;
-    }
+      if (user.length == 0) {
+        return {
+          error: "Unregistered email",
+          msg: "Email no registrado",
+          data: null,
+        };
+      }
 
-    if (mailFlag && pwdFlag) {
-      return true;
-    } else {
-      return false;
+      const compare = await bcrypt.compare(password, user[0].password);
+
+      if (compare) {
+        return { error: null, msg: "Login correcto", data: user };
+      } else {
+        return { error: "No autorizado", msg: "No autorizado", data: null };
+      }
+    } catch (e) {
+      return e;
     }
   },
 };

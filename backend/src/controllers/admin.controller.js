@@ -1,3 +1,14 @@
+require("../database/database.js");
+const USER = require("../database/models/User.js");
+
+const {
+  validateEmail,
+  validatePassword,
+  validateString,
+} = require("../controllers/general.controller.js");
+
+const bcrypt = require("bcrypt");
+
 const adminController = {
   // CLIENTS
   createClient: () => {},
@@ -45,13 +56,6 @@ const adminController = {
   updateSettings: () => {},
   getSettings: () => {},
 
-  // SHOPS
-  createShop: () => {},
-  updateShop: (id) => {},
-  deleteShop: (id) => {},
-  getAllShops: () => {},
-  getSingleShop: (id) => {},
-
   // SUPPLIERS
   createSupplier: () => {},
   updateSupplier: (id) => {},
@@ -67,7 +71,40 @@ const adminController = {
   getSingleWorker: () => {},
 
   // ADMINS
-  createAdmin: (email) => {},
+  createNewAdmin: async (fullName, email, password) => {
+    if (
+      validateEmail(email) &&
+      validatePassword(password) &&
+      validateString(fullName)
+    ) {
+      try {
+        const salt = await bcrypt.genSalt(10);
+        password = await bcrypt.hash(password, salt);
+
+        const newAdmin = new USER({
+          fullName,
+          email,
+          password,
+        });
+
+        const stored = await newAdmin.save();
+
+        return {
+          error: null,
+          msg: "Nuevo admin creado correctamente",
+          data: newAdmin,
+        };
+      } catch (e) {
+        return { error: e, msg: "Error al guardar los datos", data: e };
+      }
+    } else {
+      return {
+        error: "Invalid data type",
+        msg: "Tipo de datos incorrecto",
+        data: null,
+      };
+    }
+  },
   deleteAdmin: (id) => {},
   updateAdmin: (id) => {},
   getAllAdmins: () => {},

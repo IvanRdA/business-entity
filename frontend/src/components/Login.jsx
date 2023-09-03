@@ -46,7 +46,7 @@ export default function Home(){
     async function loginValidation(e){
       e.preventDefault();
 
-      const response = await fetch('http://localhost:4000/private-api/v1-0/validateLogin', {
+      const response = await fetch('http://localhost:4500/private-api/v1-0/validateLogin', {
         method: 'POST',
         headers: 
         { 
@@ -55,12 +55,11 @@ export default function Home(){
         body: JSON.stringify({ mail, pwd })
       })
       const admins = await response.json();
-      console.log(admins)
-      console.log([mail, pwd])
 
-      if(admins.status){
-        alert(admins.status);
+      if(admins.error != null){
+        alert(admins.msg);
       }else{ 
+        alert(admins.msg)
         window.location.href = 'http://localhost:3000/dashboard';
       }
     };
@@ -118,7 +117,7 @@ export default function Home(){
           type="submit"
           name="submit-btn"
           id="submit-btn"
-          value="INICIAR SESION"
+          value="INTRODUZCA DATOS VALIDOS"
           disabled
         />
         }
