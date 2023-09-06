@@ -1,8 +1,12 @@
 const Express = require("express");
 const Router = Express.Router();
 
-const { getAllShops, createShop } = require("../controllers/shop.controller");
-const { validateString } = require("../controllers/general.controller");
+const {
+  getAllShops,
+  createShop,
+  validateShop,
+} = require("../controllers/shop.controller");
+const { admins } = require("../assets/codes");
 
 Router.get(`${process.env.API_URI}getAllShops`, async (req, res) => {
   const response = await getAllShops();
@@ -15,13 +19,31 @@ Router.get(`${process.env.API_URI}getAllShops`, async (req, res) => {
 });
 
 Router.post(`${process.env.API_URI}createShop`, async (req, res) => {
-  if (validateString(req.body.name)) {
-    const newShop = await createShop(req.body);
-    return { error: newShop.error, msg: newShop.msg, data: newShop.data };
+  const request = req.body;
+  const shop = {
+    id: request.id,
+    name: request.name,
+    direction: {
+      street: request.direction.street,
+      number: request.direction.number,
+      postalCode: request.direction.postalCode,
+      city: request.direction.city,
+      community: request.direction.community,
+      country: request.direction.country,
+    },
+    phone: request.phone,
+    openDay: request.openDay,
+  };
+
+  if (validateShop(shop)) {
+    const newShop = await createShop(shop);
+    res
+      .status(200)
+      .json({ error: newShop.error, msg: newShop.msg, data: newShop.data });
   } else {
     res.status(400).json({
-      error: "Invalid name data type",
-      msg: "Nombre de tienda invalido",
+      error: "Invalid data type",
+      msg: admins.errors.ERR_101,
       data: null,
     });
   }

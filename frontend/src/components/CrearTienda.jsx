@@ -36,6 +36,7 @@ export default function CrearTienda() {
 
     const response = await request.json();
 
+    dispatch({ type: "RESET" });
     alert(response.msg);
   }
 
@@ -51,7 +52,6 @@ export default function CrearTienda() {
           <form
             className="m-6 p-6 min-h-screen"
             method="POST"
-            onSubmit={createNewShop}
           >
             <div className="flex flex-col md:flex-row gap-4 w-screen]">
               <h4 className="text-[--whiteColor]">INFORMACION BASICA</h4>
@@ -179,6 +179,7 @@ export default function CrearTienda() {
                 className="bg-[--whiteColor] text-[--blackColor] m-6 p-3 hover:bg-[--blackColor] hover:text-[--whiteColor] hover:scale-110 rounded-tr-md rounded-bl-md ease-out duration-200 cursor-pointer"
                 type="submit"
                 value="CREAR NUEVA TIENDA"
+                onClick={createNewShop}
               />
             </div>
           </form>

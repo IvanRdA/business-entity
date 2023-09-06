@@ -60,6 +60,22 @@ export default function reducer(state, action) {
         openDay: action.value,
       };
     }
+    case "RESET": {
+      return {
+        id: "",
+        name: "",
+        direction: {
+          street: "",
+          number: 0,
+          postalCode: 0,
+          city: "",
+          community: "",
+          country: "",
+        },
+        phone: "666666666",
+        openDay: Date.now(),
+      };
+    }
   }
   return state;
 }

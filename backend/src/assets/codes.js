@@ -1,6 +1,10 @@
 const codes = {
   shops: {
-    errors: {},
+    errors: {
+      ERR_301: "Nombre no valido",
+      ERR_302: "ID de tienda repetido",
+      ERR_303: "Error creando la tienda",
+    },
     success: {
       SUC_301: "Tienda creada correctamente",
     },
