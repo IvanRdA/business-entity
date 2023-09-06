@@ -1,6 +1,8 @@
 require("../database/database.js");
 const SHOP = require("../database/models/Shop.js");
 
+const { shops, login } = require("../assets/codes.js");
+
 const shopController = {
   // SHOPS
   createShop: async (shop) => {
@@ -17,11 +19,11 @@ const shopController = {
   deleteShop: (id) => {},
   getAllShops: async () => {
     try {
-      const shops = await SHOP.find();
+      const businessUnits = await SHOP.find();
 
-      return { error: null, msg: "Todas las tiendas registradas", data: shops };
+      return { error: null, msg: shops.success.SUC_301, data: shops };
     } catch (e) {
-      return { error: e, msg: "Error encontrando las tiendas", data: null };
+      return { error: e, msg: login.errors.ERR_03, data: null };
     }
   },
   getSingleShop: (id) => {},

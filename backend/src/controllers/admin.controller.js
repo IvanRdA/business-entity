@@ -1,6 +1,8 @@
 require("../database/database.js");
 const USER = require("../database/models/User.js");
 
+const { admins, login } = require("../assets/codes");
+
 const {
   validateEmail,
   validatePassword,
@@ -91,16 +93,16 @@ const adminController = {
 
         return {
           error: null,
-          msg: "Nuevo admin creado correctamente",
+          msg: admins.success.SUC_101,
           data: newAdmin,
         };
       } catch (e) {
-        return { error: e, msg: "Error al guardar los datos", data: e };
+        return { error: e, msg: login.errors.ERR_03, data: e };
       }
     } else {
       return {
         error: "Invalid data type",
-        msg: "Tipo de datos incorrecto",
+        msg: admins.errors.ERR_101,
         data: null,
       };
     }

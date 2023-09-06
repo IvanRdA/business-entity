@@ -2,6 +2,8 @@
 const Express = require("express");
 const Router = Express.Router();
 
+const { login } = require("../assets/codes");
+
 // LOGIN CONTROLLER METHODS IMPORT
 const { checkLoginCredentials } = require("../controllers/login.controller");
 const {
@@ -26,13 +28,13 @@ Router.post(`${process.env.API_URI}validateLogin`, async (req, res) => {
   } else if (!checkEmail(mail)) {
     res.status(401).json({
       error: "Invalid email",
-      msg: "Formato de email no valido",
+      msg: login.errors.ERR_04,
       data: null,
     });
   } else {
     res.status(401).json({
       error: "Invalid password",
-      msg: "Formato de contrasenya no valido",
+      msg: login.errors.ERR_05,
       data: null,
     });
   }
