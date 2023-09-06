@@ -12,12 +12,12 @@ const shopSchema = mongoose.Schema({
   direction: {
     street: { type: String },
     number: { type: Number },
-    postalCode: { type: Number },
+    postalCode: { type: String, minLength: 5, maxLength: 5 },
     city: { type: String },
     community: { type: String },
     country: { type: String },
   },
-  phone: { type: Number },
+  phone: { type: String, minLength: 9, maxLength: 9 },
   openDay: { type: Number },
 });
 

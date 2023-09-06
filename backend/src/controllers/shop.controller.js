@@ -3,7 +3,16 @@ const SHOP = require("../database/models/Shop.js");
 
 const shopController = {
   // SHOPS
-  createShop: () => {},
+  createShop: async (shop) => {
+    try {
+      const newShop = new SHOP(shop);
+      await newShop.save();
+
+      return { error: null, msg: "Tienda creada correctamente", data: shop };
+    } catch (e) {
+      return { error: e, msg: "Error creando la tienda", data: e };
+    }
+  },
   updateShop: (id) => {},
   deleteShop: (id) => {},
   getAllShops: async () => {

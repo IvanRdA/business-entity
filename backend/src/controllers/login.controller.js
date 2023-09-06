@@ -24,7 +24,7 @@ const loginController = {
         return { error: "No autorizado", msg: "No autorizado", data: null };
       }
     } catch (e) {
-      return e;
+      return { error: e, msg: "Error comprobando los datos", data: e };
     }
   },
 };
