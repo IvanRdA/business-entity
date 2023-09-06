@@ -175,12 +175,21 @@ export default function CrearTienda() {
               />
             </div>
             <div className="m-6">
-              <input
-                className="bg-[--whiteColor] text-[--blackColor] m-6 p-3 hover:bg-[--blackColor] hover:text-[--whiteColor] hover:scale-110 rounded-tr-md rounded-bl-md ease-out duration-200 cursor-pointer"
-                type="submit"
-                value="CREAR NUEVA TIENDA"
-                onClick={createNewShop}
-              />
+              {state.name && state.id != "" ? (
+                <input
+                  className="bg-[--whiteColor] text-[--blackColor] m-6 p-3 hover:bg-[--blackColor] hover:text-[--whiteColor] hover:scale-110 rounded-tr-md rounded-bl-md ease-out duration-200 cursor-pointer"
+                  type="submit"
+                  value="CREAR NUEVA TIENDA"
+                  onClick={createNewShop}
+                />
+              ) : (
+                <input
+                  className="m-6"
+                  type="submit"
+                  value="ID Y NOMBRE REQUERIDOS"
+                  disabled
+                />
+              )}
             </div>
           </form>
         </main>
