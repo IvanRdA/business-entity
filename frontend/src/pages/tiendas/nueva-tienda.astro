@@ -3,11 +3,14 @@ import Layout from "../../layouts/Layout.astro";
 
 import Sidebar from "../../components/Sidebar.astro";
 
-import CrearTienda from "../../components/CrearTienda.jsx";
+import CrearTienda from "../../components/shops/CrearTienda.jsx";
 ---
 
 <Layout pageTitle="Tiendas">
   <main class="flex flex-col md:flex-row">
+    <Sidebar actions={["Create", "Update", "Delete", "Filter"]}
+    h3Text="Create shop"
+    descrText="Aqui podras crear tiendas nuevas"/>
     <CrearTienda client:load/>
   </main>
 </Layout>
