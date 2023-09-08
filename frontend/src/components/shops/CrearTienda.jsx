@@ -16,6 +16,12 @@ const initialState = {
   },
   phone: "666666666",
   openDay: Date.now(),
+  fixCosts: {
+    rent: 0,
+    employees: 0,
+    supplies: 0,
+    others: 0,
+  },
 };
 
 export default function CrearTienda() {
@@ -264,6 +270,91 @@ export default function CrearTienda() {
                     dispatch({
                       type: "CHANGE_OPENDAY",
                       value: new Date(e.target.value).getTime(),
+                    })
+                  }
+                />
+              </div>
+            </div>
+          </div>
+          <div className="w-[60vw] m-auto p-2">
+            <h4 className="text-[--mainRed]">GASTOS FIJOS</h4>
+            <div className="grid grid-cols-2 grid-flow-row justify-center p-2">
+              <div>
+                <label
+                  htmlFor="rent"
+                  className="block"
+                >
+                  ALQUILER
+                </label>
+                <input
+                  type="number"
+                  id="rent"
+                  value={state.fixCosts.rent}
+                  pattern="[0-9]"
+                  className="text-center  valid:border-green-500 invalid:border-red-500 text-[--blackColor]"
+                  placeholder="1000"
+                  onChange={(e) =>
+                    dispatch({ type: "CHANGE_RENT", value: e.target.value })
+                  }
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="employees"
+                  className="block"
+                >
+                  SUELDOS
+                </label>
+                <input
+                  type="number"
+                  id="employees"
+                  value={state.fixCosts.employees}
+                  className="text-center  valid:border-green-500 invalid:border-red-500 text-[--blackColor]"
+                  placeholder="1000"
+                  onChange={(e) =>
+                    dispatch({
+                      type: "CHANGE_EMPLOYEES",
+                      value: e.target.value,
+                    })
+                  }
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="supplies"
+                  className="block"
+                >
+                  SUMINISTROS
+                </label>
+                <input
+                  type="number"
+                  id="supplies"
+                  value={state.fixCosts.supplies}
+                  pattern="[0-9]"
+                  className="text-center  valid:border-green-500 invalid:border-red-500 text-[--blackColor]"
+                  placeholder="1000"
+                  onChange={(e) =>
+                    dispatch({ type: "CHANGE_SUPPLIES", value: e.target.value })
+                  }
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="others"
+                  className="block"
+                >
+                  OTROS
+                </label>
+                <input
+                  type="number"
+                  id="others"
+                  value={state.fixCosts.others}
+                  className="text-center  valid:border-green-500 invalid:border-red-500 text-[--blackColor]"
+                  placeholder="1000"
+                  onChange={(e) =>
+                    dispatch({
+                      type: "CHANGE_OTHERS",
+                      value: e.target.value,
                     })
                   }
                 />

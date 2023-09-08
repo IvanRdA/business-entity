@@ -33,6 +33,12 @@ Router.post(`${process.env.API_URI}createShop`, async (req, res) => {
     },
     phone: request.phone,
     openDay: request.openDay,
+    fixCosts: {
+      rent: request.fixCosts.rent,
+      employees: request.fixCosts.employees,
+      supplies: request.fixCosts.supplies,
+      others: request.fixCosts.others,
+    },
   };
 
   if (validateShop(shop)) {

@@ -21,7 +21,7 @@ export default function reducer(state, action) {
     case "CHANGE_NUMBER": {
       return {
         ...state,
-        direction: { ...state.direction, number: parseInt(action.value) },
+        direction: { ...state.direction, number: parseInt(action.value) || 0 },
       };
     }
     case "CHANGE_POSTALCODE": {
@@ -60,6 +60,30 @@ export default function reducer(state, action) {
         openDay: action.value,
       };
     }
+    case "CHANGE_RENT": {
+      return {
+        ...state,
+        fixCosts: { ...state.fixCosts, rent: parseInt(action.value) || 0 },
+      };
+    }
+    case "CHANGE_EMPLOYEES": {
+      return {
+        ...state,
+        fixCosts: { ...state.fixCosts, employees: parseInt(action.value) || 0 },
+      };
+    }
+    case "CHANGE_SUPPLIES": {
+      return {
+        ...state,
+        fixCosts: { ...state.fixCosts, supplies: parseInt(action.value) || 0 },
+      };
+    }
+    case "CHANGE_OTHERS": {
+      return {
+        ...state,
+        fixCosts: { ...state.fixCosts, others: parseInt(action.value) || 0 },
+      };
+    }
     case "RESET": {
       return {
         id: "",
@@ -74,6 +98,12 @@ export default function reducer(state, action) {
         },
         phone: "666666666",
         openDay: Date.now(),
+        fixCosts: {
+          rent: 0,
+          employees: 0,
+          supplies: 0,
+          others: 0,
+        },
       };
     }
   }

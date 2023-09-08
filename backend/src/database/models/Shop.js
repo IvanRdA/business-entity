@@ -19,6 +19,12 @@ const shopSchema = mongoose.Schema({
   },
   phone: { type: String, minLength: 9, maxLength: 9 },
   openDay: { type: Number },
+  fixCosts: {
+    rent: { type: Number, min: 0 },
+    employees: { type: Number, min: 0 },
+    supplies: { type: Number, min: 0 },
+    others: { type: Number, min: 0 },
+  },
 });
 
 const SHOP = mongoose.model("Shop", shopSchema);

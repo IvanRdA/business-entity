@@ -54,7 +54,11 @@ const shopController = {
       stringRegExp.test(shop.direction.community) &&
       stringRegExp.test(shop.direction.country) &&
       typeof shop.direction.number === "number" &&
-      typeof shop.openDay === "number"
+      typeof shop.openDay === "number" &&
+      typeof shop.fixCosts.rent === "number" &&
+      typeof shop.fixCosts.employees === "number" &&
+      typeof shop.fixCosts.supplies === "number" &&
+      typeof shop.fixCosts.others === "number"
     ) {
       return true;
     } else {
