@@ -21,7 +21,7 @@ export default function reducer(state, action) {
     case "CHANGE_NUMBER": {
       return {
         ...state,
-        direction: { ...state.direction, number: parseInt(action.value) || 0 },
+        direction: { ...state.direction, number: action.value },
       };
     }
     case "CHANGE_POSTALCODE": {
@@ -90,19 +90,19 @@ export default function reducer(state, action) {
         name: "",
         direction: {
           street: "",
-          number: 0,
-          postalCode: 0,
+          number: "",
+          postalCode: "",
           city: "",
           community: "",
           country: "",
         },
-        phone: "666666666",
+        phone: "",
         openDay: Date.now(),
         fixCosts: {
-          rent: 0,
-          employees: 0,
-          supplies: 0,
-          others: 0,
+          rent: "",
+          employees: "",
+          supplies: "",
+          others: "",
         },
       };
     }

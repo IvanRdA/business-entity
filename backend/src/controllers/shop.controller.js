@@ -43,6 +43,7 @@ const shopController = {
     const skuRegExp = /^[A-Z]{3}[0-9]{2}$/;
     const nameRegExp = /^[a-zA-Z0-9\s]+$/;
     const stringRegExp = /^[a-zA-Z\s]+$/;
+    const numberRegExp = /^[0-9]{1,4}$/;
 
     if (
       cpRegExp.test(shop.direction.postalCode) &&
@@ -53,7 +54,7 @@ const shopController = {
       stringRegExp.test(shop.direction.city) &&
       stringRegExp.test(shop.direction.community) &&
       stringRegExp.test(shop.direction.country) &&
-      typeof shop.direction.number === "number" &&
+      numberRegExp.test(shop.direction.number) &&
       typeof shop.openDay === "number" &&
       typeof shop.fixCosts.rent === "number" &&
       typeof shop.fixCosts.employees === "number" &&

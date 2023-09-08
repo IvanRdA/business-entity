@@ -11,7 +11,7 @@ const shopSchema = mongoose.Schema({
   name: { type: String, required: true, unique: true },
   direction: {
     street: { type: String },
-    number: { type: Number },
+    number: { type: String, minLength: 1, maxLength: 4 },
     postalCode: { type: String, minLength: 5, maxLength: 5 },
     city: { type: String },
     community: { type: String },
